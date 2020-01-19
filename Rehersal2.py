@@ -4,7 +4,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from collections import defaultdict
 from collections import Counter
-sns.set()
+import statistics as st       # StatisticsError
+sns.set() 
 
 phrase = '''
 Hello World,   How are   you?  My name is
@@ -80,15 +81,45 @@ is \" Eyvaz \". What is your name?   '''
 #     print(i + " : " + j)
 
 
-sentence = 'Hello World Hello Azerbaijan Hello World'
-s_list = sentence.split(' ')
-word_counts = Counter([])   # Counter accept "list" object
-for word in s_list:
-    word_counts[word]+=1
-for i in word_counts:
-    print(i + " : " + str(word_counts[i]))
-print('Most common : ' + str(word_counts.most_common(1)))
+# sentence = 'Hello World Hello Azerbaijan Hello World'
+# s_list = sentence.split(' ')
+# word_counts = Counter([])   # Counter accept "list" object
+# for word in s_list:
+#     word_counts[word]+=1
+# for i in word_counts:
+#     print(i + " : " + str(word_counts[i]))
+# print('Most common : ' + str(word_counts.most_common(1)))
 
-print(all([True, 6.7, 'Hello']))
-print(all([None, 6.7, 'Hello']))
-print(any([None, 0, 'a']))
+# print(all([True, 6.7, 'Hello']))
+# print(all([None, 6.7, 'Hello']))
+# print(any([None, 0, 'a']))
+
+data = pd.read_csv('bank.csv')
+# print(data.head(6))   # default is 5
+# print(data.tail(6))     # default is 5
+# print(data.shape)
+# print(data.describe())
+# print(data.mean())
+# print(data.min())
+# print(data.max())
+# print(data.std())
+# print(data.corr())
+# print(data.count(numeric_only = True))  # Counts only numeric variables
+
+# print(data.median())
+# print(data[data['age']<30])
+# data = data.sort_values(by = ['age'], kind = 'quicksort')
+print(data)
+# print(data.groupby(['age', 'job']).mean())
+# print(pd.isnull(data).sum())
+
+# data = data.dropna(how = 'all')
+# data = data.fillna(0)
+# print(data)
+#
+# data.columns = ['age', 'job', 'marital', 'study', 'def', 'balance', ...]
+# print(data.columns)
+#
+
+mean = st.mean(data['age'])
+print('Mean value for age -> {}'.format(mean))
